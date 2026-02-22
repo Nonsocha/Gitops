@@ -72,13 +72,45 @@ kubectl port-forward svc/argocd-server -n argocd 8080:443
 ### 3.2 Open Argo CD UI
 
 In your browser:
-``
+
+```
 https://localhost:8080
 ```
+
 ### 3.3 Get Admin Password
 
 ```
 kubectl get secret argocd-initial-admin-secret \
   -n argocd \
   -o jsonpath="{.data.password}" | base64 --decode
+```
+### STEP 4: Deploy a Sample Application with Argo CD
+4.1 Sample Git Repository
+
+We’ll use a public repo:
+
+```
+https://github.com/argoproj/argocd-example-apps
+```
+### 4.2 Create an Application (UI Method – Recommended)
+
+1 Open Argo CD UI
+
+2 Click NEW APP
+
+3 Fill in:
+
+### General
+
+- Application Name: guestbook
+
+- Project: default
+
+- Sync Policy: Automatic
+
+### 5.3 Verify Deployment 
+
+```
+kubectl get pods
+kubectl get svc
 ```

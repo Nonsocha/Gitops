@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: argocd-server
-  namespace: argocd
+  name: guestbook
+  namespace: default
 spec:
   type: NodePort
   ports:
-    - port: 8080
-      targetPort: 8080
-      nodePort: 30080
+    - port: 80
+      targetPort: 80
+      nodePort: 30007
   selector:
-    app.kubernetes.io/name: argocd-server
+    app: guestbook
